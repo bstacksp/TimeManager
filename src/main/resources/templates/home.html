@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="w3-light-grey">
+<div class="w3-container w3-blue-grey w3-opacity w3-right-align">
+	<h1 align="center">Converter</h1>
+</div>
+
+<form method="post">
+	<button type="submit" name="TimeStart" class="w3-btn w3-round-large">start</button>
+	<button type="submit" name="TimeStop" class="w3-btn w3-round-large">end</button>
+</form>
+<p th:text="${time}">
+
+
+<div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
+	<form method="post" th:align="center">
+	<button type="submit" name="exit" class="w3-btn w3-round-large">Exit</button>
+	</form>
+</div>
+</body>
+</html>

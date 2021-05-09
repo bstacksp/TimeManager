@@ -1,13 +1,13 @@
-package com.apps.timemanager;
+package com.app.TimeManager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TimemanagerApplication {
+public class TimeManagerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TimemanagerApplication.class, args);
+		SpringApplication.run(TimeManagerApplication.class, args);
 	}
 
 }

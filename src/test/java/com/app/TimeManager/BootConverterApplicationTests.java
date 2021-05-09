@@ -1,10 +1,10 @@
-package com.apps.timemanager;
+package com.app.TimeManager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TimemanagerApplicationTests {
+class TimeManagerApplicationTests {
 
 	@Test
 	void contextLoads() {
