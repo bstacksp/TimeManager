@@ -14,8 +14,14 @@ public class Time {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User userId;
+
 	@Column(name = "date_start")
 	private LocalTime date_start;
+
 	@Column(name = "date_end")
 	private LocalTime date_end;
 

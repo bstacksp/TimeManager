@@ -1,6 +1,7 @@
 package com.app.TimeManager.services.impl;
 
 import com.app.TimeManager.entities.User;
+import com.app.TimeManager.entities.dto.UserDto;
 import com.app.TimeManager.repositories.UsersRepository;
 import com.app.TimeManager.services.UserService;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-	Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+	private Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Autowired
 	UsersRepository usersRepository;
@@ -33,6 +34,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getAllUsers() {
 		return usersRepository.findAll();
+	}
+
+	@Override
+	public UserDto getUser(String name) {
+		UserDto userDto = new UserDto(usersRepository.getByLogin(name));
+		return userDto;
 	}
 
 	@Override

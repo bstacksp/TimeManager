@@ -2,6 +2,7 @@ package com.app.TimeManager.controllers;
 
 
 import com.app.TimeManager.entities.User;
+import com.app.TimeManager.entities.dto.UserDto;
 import com.app.TimeManager.services.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,9 @@ public class HomePageController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String filter(Model model, HttpServletRequest request){
 
+		//TODO: FIX
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
+		UserDto user = (UserDto) session.getAttribute("user");
 
 		if (user == null) {
 			return "redirect:/login";
@@ -36,14 +38,14 @@ public class HomePageController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String converterPost (Model model, HttpServletRequest request) {
-		if( request.getParameter("TimeStart") != null) {
-			timeService.startTime();
-		}
+
+		HttpSession session = request.getSession();
+
 		if( request.getParameter("TimeStop") != null) {
-			timeService.endTime();
+			UserDto user = (UserDto) session.getAttribute("user");
+			System.out.println(user);
 		}
 		if (request.getParameter("exit") != null) {
-			HttpSession session = request.getSession();
 			session.removeAttribute("user");
 			return "redirect:/";
 		}

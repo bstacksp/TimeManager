@@ -1,6 +1,7 @@
 package com.app.TimeManager.entities;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
+@Getter
 @Table(name = "users")
 public class User {
 	@Id
