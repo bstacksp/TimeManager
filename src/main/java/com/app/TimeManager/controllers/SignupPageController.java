@@ -1,6 +1,5 @@
 package com.app.TimeManager.controllers;
 
-import com.app.TimeManager.entities.User;
 import com.app.TimeManager.entities.dto.UserDto;
 import com.app.TimeManager.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,7 @@ public class SignupPageController {
 		HttpSession session = request.getSession();
 		userService.addUser(user);
 		session.setAttribute("user ", userService.getUser(user.getLogin()));
+		System.out.println("user = " + user );
 		return "redirect:/home";
 	}
 }

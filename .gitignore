@@ -33,5 +33,9 @@ build/
 .vscode/
 
 ### JS ###
+npm-*.log
+generated/.
+
+### JS ###
 .log
 generated/.
