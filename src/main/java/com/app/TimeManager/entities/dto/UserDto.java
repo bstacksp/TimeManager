@@ -17,4 +17,9 @@ public class UserDto {
 		this.login = user.getLogin();
 		this.password = user.getPassword();
 	}
+
+	public UserDto (String login, String password) {
+		this.login = login;
+		this.password = password;
+	}
 }

@@ -1,5 +1,6 @@
 package com.app.TimeManager.controllers;
 
+import com.app.TimeManager.entities.User;
 import com.app.TimeManager.entities.dto.UserDto;
 import com.app.TimeManager.services.TimeService;
 import com.app.TimeManager.services.UserService;
@@ -27,12 +28,16 @@ public class LoginPageController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String postLogin(User user, HttpServletRequest request) {
+	public String postLogin(UserDto user, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+
 		if (!(userService.login(user.getLogin(), user.getPassword()))) {
 			return "login";
 		}
-		HttpSession session = request.getSession();
+
 		session.setAttribute("user", userService.getUser(user.getLogin()));
+		System.out.println("user = " + userService.getUser(user.getLogin() + ", request = " + request));
 		timeService.startTime(user);
 		return "redirect:/home";
 	}

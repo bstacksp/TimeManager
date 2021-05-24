@@ -2,9 +2,12 @@ package com.app.TimeManager.services.impl;
 
 import com.app.TimeManager.entities.Time;
 import com.app.TimeManager.entities.User;
+import com.app.TimeManager.entities.dto.UserDto;
 import com.app.TimeManager.repositories.TimeRepository;
 import com.app.TimeManager.repositories.UsersRepository;
 import com.app.TimeManager.services.TimeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,8 @@ import java.time.LocalTime;
 @Service
 public class TimeServiceImpl implements TimeService {
 
+	private Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+
 	@Autowired
 	private TimeRepository timeRepository;
 
@@ -21,7 +26,7 @@ public class TimeServiceImpl implements TimeService {
 	private UsersRepository usersRepository;
 
 	@Override
-	public void startTime(User user) {
+	public void startTime(UserDto user) {
 		LocalTime firstTime = LocalTime.now();
 		Time time = new Time();
 		time.setUserId(usersRepository.getByLogin(user.getLogin()));
@@ -35,9 +40,10 @@ public class TimeServiceImpl implements TimeService {
 	}
 
 	@Override
-	public void endTime(User user) {
+	public void endTime(UserDto user) {
 		LocalTime endTime = LocalTime.now();
-		Time time = timeRepository.findTopByUserId(user.getId());
+		Time time = timeRepository.findTopOrderByUserId(user.getId());
+		log.info("Session end for user {} - {}", user.getId(), time);
 		time.setDate_end(endTime);
 		timeRepository.save(time);
 	}

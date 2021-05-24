@@ -13,7 +13,7 @@ public interface UserService {
 
 	UserDto getUser(String name);
 
-	void addUser(User user);
+	void addUser(UserDto user);
 
 	void deleteUser(Long id);
 }

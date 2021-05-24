@@ -38,12 +38,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDto getUser(String name) {
-		UserDto userDto = new UserDto(usersRepository.getByLogin(name));
-		return userDto;
+		return new UserDto(usersRepository.getByLogin(name));
 	}
 
 	@Override
-	public void addUser(User user) {
+	public void addUser(UserDto userDto) {
+		User user = new User(userDto.getLogin(), userDto.getPassword());
 		usersRepository.save(user);
 	}
 

@@ -25,7 +25,6 @@ public class HomePageController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String filter(Model model, HttpServletRequest request){
 
-		//TODO: FIX
 		HttpSession session = request.getSession();
 		UserDto user = (UserDto) session.getAttribute("user");
 
@@ -43,9 +42,9 @@ public class HomePageController {
 
 		if( request.getParameter("TimeStop") != null) {
 			UserDto user = (UserDto) session.getAttribute("user");
-			System.out.println(user);
 		}
 		if (request.getParameter("exit") != null) {
+			timeService.endTime((UserDto) request.getSession().getAttribute("user"));
 			session.removeAttribute("user");
 			return "redirect:/";
 		}
