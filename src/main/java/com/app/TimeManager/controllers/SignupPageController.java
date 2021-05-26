@@ -1,6 +1,7 @@
 package com.app.TimeManager.controllers;
 
 import com.app.TimeManager.entities.dto.UserDto;
+import com.app.TimeManager.services.TimeService;
 import com.app.TimeManager.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ public class SignupPageController {
 
 	@Autowired
 	UserService userService;
+	@Autowired
+	TimeService timeService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String page() {
@@ -27,6 +30,7 @@ public class SignupPageController {
 		HttpSession session = request.getSession();
 		userService.addUser(user);
 		session.setAttribute("user", userService.getUser(user.getLogin()));
+		timeService.startTime(user);
 		return "redirect:/home";
 	}
 }

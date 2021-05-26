@@ -1,16 +1,23 @@
 package com.app.TimeManager.entities.dto;
 
-import lombok.AllArgsConstructor;
+import com.app.TimeManager.entities.Time;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalTime;
+import java.time.ZonedDateTime;
 
 @Getter
-@AllArgsConstructor
 public class TimeDto {
 
-	private LocalTime firstTime;
-	private LocalTime secondTime;
-	private Double result;
+	private ZonedDateTime date_start;
+
+	private ZonedDateTime date_end;
+
+	private LocalTime result;
+
+	public TimeDto(Time time) {
+		this.date_start = time.getDate_start();
+		this.date_end = time.getDate_end();
+		this.result = time.getResult();
+	}
 }

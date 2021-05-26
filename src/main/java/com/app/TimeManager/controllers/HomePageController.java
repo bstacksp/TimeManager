@@ -1,7 +1,5 @@
 package com.app.TimeManager.controllers;
 
-
-import com.app.TimeManager.entities.User;
 import com.app.TimeManager.entities.dto.UserDto;
 import com.app.TimeManager.services.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
 
 
 @Controller
@@ -31,7 +28,7 @@ public class HomePageController {
 		if (user == null) {
 			return "redirect:/login";
 		}
-		model.addAttribute("time", timeService.getTime());
+		model.addAttribute("time", timeService.getTime(user));
 		return "home";
 	}
 

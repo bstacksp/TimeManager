@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalTime;
+import java.time.ZonedDateTime;
 
 @Data
 @Entity
@@ -20,9 +21,12 @@ public class Time {
 	private User userId;
 
 	@Column(name = "date_start")
-	private LocalTime date_start;
+	private ZonedDateTime date_start;
 
 	@Column(name = "date_end")
-	private LocalTime date_end;
+	private ZonedDateTime date_end;
+
+	@Column(name = "result")
+	private LocalTime result;
 
 }
