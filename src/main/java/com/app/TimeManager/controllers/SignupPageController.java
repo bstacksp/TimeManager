@@ -26,8 +26,7 @@ public class SignupPageController {
 
 		HttpSession session = request.getSession();
 		userService.addUser(user);
-		session.setAttribute("user ", userService.getUser(user.getLogin()));
-		System.out.println("user = " + user );
+		session.setAttribute("user", userService.getUser(user.getLogin()));
 		return "redirect:/home";
 	}
 }

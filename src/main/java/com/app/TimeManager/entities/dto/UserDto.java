@@ -2,9 +2,11 @@ package com.app.TimeManager.entities.dto;
 
 import com.app.TimeManager.entities.User;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Data
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor

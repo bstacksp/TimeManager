@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void addUser(UserDto userDto) {
 		User user = new User(userDto.getLogin(), userDto.getPassword());
+		log.info("New user = {}", user);
 		usersRepository.save(user);
 	}
 

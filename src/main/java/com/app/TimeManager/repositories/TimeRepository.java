@@ -5,6 +5,6 @@ import com.app.TimeManager.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TimeRepository extends JpaRepository<Time, Long> {
-	Time findTopOrderByUserId(Long id);
+	Time findTopOrderByUserId(User user);
 
 }
